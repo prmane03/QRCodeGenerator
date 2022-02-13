@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Qr Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/waltograph-disney" type="text/css"/>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+	<style>
+		body{
+				background: #642B73;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to right, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to right, #C6426E, #642B73); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+	</style>
+</head>
+<body class="w-full">
+        <h2 class="my-4 text-blue-500 text-2xl font-bold text-center "><span class="p-2 my-2 text-4xl text-white opacity-90 " style="text-shadow:1px 1px 2px gray">Generate Qr Code</span></h2>
+ 
+    
+
+      
+		<!-- Container -->
+		<div class="container mx-auto">
+			<div class="flex justify-center px-6 my-12">
+				<!-- Row -->
+				<div class="w-full xl:w-3/4 lg:w-11/12 flex">
+					<!-- Col -->
+					<div class="w-full p-12 text-center h-full bg-gray-400 hidden lg:block lg:w-5/12 bg-yellow-600 object-fit bg-cover rounded-l-lg">
+						<img src="" id="img" class="mx-auto mt-12">
+						<a href="" id="downloadLink" target="_blank" class="font-bold text-white my-4" download></a>
+					</div>
+					<!-- Col -->
+					<div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+						<h3 class="pt-4 text-2xl text-center">Fill Data</h3>
+						<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+							<div class="mb-4">
+								<div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mb-2 text-sm font-bold text-gray-700" for="data">
+										Data
+									</label>
+									<textarea
+										class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id="data"
+										placeholder="Data"></textarea>
+										<p class="text-red font-bold"></p>
+								</div>
+								
+							</div>
+							<div class="mb-4">
+								<label class="block mb-2 text-sm font-bold text-gray-700" for="size">
+									Size
+								</label>
+								<input
+									class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+									placeholder="Size" id="size" type="number"
+								>
+								<p class="text-red font-bold"></p>
+                                
+							</div>
+                            <hr class="mb-6 border-t" />
+							<div class="mb-6 text-center">
+								<button class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+									type="button" id="generateBtn">Generate
+								</button>
+							</div>
+							
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<script>
+			var size = document.getElementById("size")
+			var data = document.getElementById("data")
+			var downloadLink = document.getElementById("downloadLink")
+			var img = document.getElementById("img")
+			var generateBtn = document.getElementById("generateBtn")
+
+			generateBtn.addEventListener('click',()=>{
+				if(data.value==""){
+					data.nextSibiling.nextSibiling.innerHtml="please fill some data"
+				}else if(size.value==""){
+					data.nextSibiling.nextSibiling.innerHtml="please specify size"
+				}else{
+					img.src="https://api.qrserver.com/v1/create-qr-code/?size="+size.value+"x"+size.value+"&data="+data.value
+					downloadLink.href="https://api.qrserver.com/v1/create-qr-code/?size="+size.value+"x"+size.value+"&data="+data.value
+					downloadLink.innerHTML="Download"
+					size.value=""
+					data.value=""
+				}
+					
+			})
+		</script>
+</body>
+</html>
