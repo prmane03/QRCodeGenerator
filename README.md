@@ -5,5 +5,5 @@
 
 To do
 - Add Tabs
-- - Add tab for reading qr code
-- - Add tab for custom qr code QRMonkey
+ - Add tab for reading qr code
+ - Add tab for custom qr code QRMonkey
